@@ -1,0 +1,39 @@
+﻿@model WebApplication1.Models.StudentMark[]
+@{
+    <style type="text/css">
+        th, td {
+            padding: 10px;
+        }
+    </style>
+}
+
+@if (Model.Length > 0 && Model.FirstOrDefault(st => st.Mark <3) is not null) {
+    <table>
+        <thead>
+            <tr>
+                <th>Студент</th>
+                <th>Предмет</th>
+                <th>Оцінка</th>
+                <th>Дата</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        @foreach (WebApplication1.Models.StudentMark st in Model) {
+            @if(st.Mark < 3 ){
+                <tr>
+                    <td>@st.GetName()</td>
+                    <td>@st.Subject</td>
+                    <td>@st.Mark</td>
+                    <td>@st.Date</td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table> 
+} else {
+    <h2>No students marks data</h2> 
+}
+<br />
+<a href="/">Головна</a>

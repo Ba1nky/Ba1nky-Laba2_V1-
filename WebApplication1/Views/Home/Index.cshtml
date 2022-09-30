@@ -1,0 +1,36 @@
+﻿@model WebApplication1.Models.StudentMark[]
+@{
+    <style type="text/css">
+        th, td {
+            padding: 10px;
+        }
+    </style>
+}
+
+@if (Model.Length > 0) {
+ <table>
+ <thead>
+     <tr>
+         <th>Студент</th>
+         <th>Предмет</th>
+         <th padding: 20px;>Оцінка</th>
+         <th>Дата</th>
+    </tr>
+ </thead>
+ <tbody>
+
+ @foreach (WebApplication1.Models.StudentMark st in Model) {
+ <tr>
+     <td>@st.GetName()</td>
+     <td>@st.Subject</td>
+     <td>@st.Mark</td>
+     <td>@st.Date</td>
+ </tr>
+ }
+ </tbody>
+ </table> } else {
+ <h2>No students marks data</h2> 
+ }
+ <br />
+ <a href="/below_three">Студенти у яких оцінка менша ніж 3</a>
+
